@@ -1,6 +1,10 @@
+-- SECTION ONE
+
 -- Run to initialize the new database
 CREATE DATABASE crowdfunding_db;
 
+--------------------------------
+-- SECTION TWO
 
 -- Open a new Query Tool in the new database, 
 -- Then run the following to create the new tables
@@ -47,6 +51,8 @@ CREATE TABLE campaign (
     FOREIGN KEY (subcategory_id) REFERENCES subcategory (subcategory_id)
 );
 
+-------------------------
+--SECTION THREE
 
 -- Refresh the database,
 -- Import each table in the order they were created,
