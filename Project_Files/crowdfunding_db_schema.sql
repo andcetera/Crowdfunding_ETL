@@ -1,3 +1,9 @@
+-- Run to initialize the new database
+CREATE DATABASE crowdfunding_db;
+
+
+-- Open a new Query Tool in the new database, 
+-- Then run the following to create the new tables
 DROP TABLE IF EXISTS campaign;
 DROP TABLE IF EXISTS contacts;
 DROP TABLE IF EXISTS category;
@@ -40,3 +46,29 @@ CREATE TABLE campaign (
     FOREIGN KEY (category_id) REFERENCES category (category_id),
     FOREIGN KEY (subcategory_id) REFERENCES subcategory (subcategory_id)
 );
+
+
+-- Refresh the database,
+-- Import each table in the order they were created,
+-- Then run each statement below to verify
+SELECT * FROM subcategory;
+SELECT * FROM category;
+SELECT * FROM contacts;
+SELECT * FROM campaign;
+
+SELECT 	a.pledged,
+		a.currency,
+		a.outcome,
+		a.company_name,
+		o.first_name,
+		o.last_name,
+		c.category,
+		s.subcategory
+FROM subcategory s
+JOIN campaign a
+ON s.subcategory_id=a.subcategory_id
+JOIN category c
+ON c.category_id=a.category_id
+JOIN contacts o
+ON o.contact_id=a.contact_id
+ORDER BY a.pledged DESC;
